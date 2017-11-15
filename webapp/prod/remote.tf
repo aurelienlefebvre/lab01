@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
-    bucket = "flams-admin"
-    key    = "d2si/lab/webapp-lab.tfstate"
+    bucket = "aurelien-d2si"
+    key    = "webapp/webapp-lab.tfstate"
     region = "eu-west-1"
   }
 }
@@ -10,8 +10,8 @@ data "terraform_remote_state" "coreInfra" {
   backend = "s3"
 
   config {
-    bucket = "flams-admin"
-    key    = "d2si/lab/coreInfra.tfstate"
+    bucket = "aurelien-d2si"
+    key    = "vpc/terraform.tfstate"
     region = "eu-west-1"
   }
 }

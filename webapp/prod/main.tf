@@ -26,20 +26,21 @@ data template_file "userdata" {
   template = "${file("${path.module}/userdata.tpl")}"
 
   vars {
-    username = "Fab"
+    username = "Aurelien"
   }
 }
 
 resource "aws_instance" "web" {
   ami                    = "${data.aws_ami.ubuntu.id}"
   instance_type          = "t2.micro"
-  key_name               = "gitD2SI"
+  key_name               = "AurelienLab"
   vpc_security_group_ids = ["${aws_security_group.web.id}"]
   subnet_id              = "${element(data.terraform_remote_state.coreInfra.subnets,0)}"
   user_data              = "${data.template_file.userdata.rendered}"
 
   tags {
-    Name = "webapp-${var.environment}"
+    Name = "EC2-Aurelien-${var.environment}"
+    DateCreated="15/11/2017"
   }
 }
 
